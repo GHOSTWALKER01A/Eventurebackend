@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 
 
-const bookingSchema= new Schema({
+const ticketbookingSchema= new Schema({
 
   eventid:{
     type: mongoose.Schema.Types.ObjectId,
@@ -31,4 +31,4 @@ const bookingSchema= new Schema({
 
 
 
-export const Booking= mongoose.model("Booking",bookingSchema)
+export const TicketBooking= mongoose.model("TicketBooking",ticketbookingSchema)

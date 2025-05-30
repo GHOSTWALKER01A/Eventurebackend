@@ -27,17 +27,6 @@ const generateAccessandRefreshtoken = async(userId)=>{
 const registerUser= asyncHandler(async (req, res)=>{
  
 
-    // data from the user
-    //validation of detail
-    //check if user was register already
-    //check if image is there 
-    //upload it to cloudinary
-    // create user object - entry in db
-    //remove password and refresh token field from response
-    // check for new user creation
-    //return res
-
-
    const {username,email,password} = req.body
    console.log("email: ",email);
 
@@ -97,13 +86,7 @@ return res.status(201).json(
 })
 
 const loginUser= asyncHandler(async(req,res)=>{
-        // req.body
-        //username or email
-        // find the user
-        // password check
-        //access and refresh token
-        // send secure cookies
-
+        
 
     const {username,email,password} = req.body
 
@@ -139,7 +122,7 @@ const loginUser= asyncHandler(async(req,res)=>{
         new ApiResponse(
             200,
             {
-                user: loggedInUser,accesstoken,refreshtoken
+                user : loggedInUser,accesstoken,refreshtoken
             },
             "User Logged In Successfully"
         )

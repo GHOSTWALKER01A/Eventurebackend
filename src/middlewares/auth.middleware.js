@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 
 
-export const verifyJWT = asyncHandler(async(req,res,next)=>{
+export const verifyJWT = (roles= []) =>{ asyncHandler(async(req,res,next)=>{
   try {
     
       const token = req.cookies?.accesstoken || req.header("Authorization")?.replace( "Bearer", "")
@@ -15,7 +15,7 @@ export const verifyJWT = asyncHandler(async(req,res,next)=>{
      }
   
   
-     const decodetoken=  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+     const decodetoken =  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
   
   const user =  await User.findById(decodetoken?._id).select("-password -refreshtoken")
   
@@ -23,7 +23,13 @@ export const verifyJWT = asyncHandler(async(req,res,next)=>{
       throw new ApiError(401,"invalid token")
   }
   
+   if (roles.length && !roles.includes(req.user.role)) {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+
+
   req.user = user;
+  
   next()
 
 
@@ -32,4 +38,4 @@ export const verifyJWT = asyncHandler(async(req,res,next)=>{
   }
     
 
-})
+})}

@@ -28,4 +28,4 @@ const uploadSchema= new Schema({
 
 
 
-export const Upload= mongoose.model("Upload",uploadSchema)
+export const Upload = mongoose.model("Upload",uploadSchema)
