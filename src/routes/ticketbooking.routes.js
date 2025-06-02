@@ -6,6 +6,9 @@ import { verifyJWT } from "../middlewares/auth.middleware.js"
 const router = Router()
 
 
+
+router.use(verifyJWT)
+
 // path for Ticket
 
 router.route('/ticketbook').post(verifyJWT,Bookticket);

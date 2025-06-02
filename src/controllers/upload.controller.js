@@ -6,7 +6,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 
 
-const uploadbanner = [upload.Uploadfile.single('banner'), asyncHandler(async(req , res)=>{
+const uploadbanner = [upload.single('banner'), asyncHandler(async(req , res)=>{
 
   try {
       if (!req.file) {

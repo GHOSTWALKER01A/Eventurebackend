@@ -11,14 +11,12 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router()
 
 
+router.use(verifyJWT)
+
+
 router.route('/uploadbanner').post(verifyJWT(['Organizer', 'Admin']),
 
-      upload.fields([
-             {
-                 name:"type", 
-                 maxCount: 1
-             }
-         ]),
+     
 
        uploadbanner
 )

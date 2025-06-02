@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 
 
 
-export const verifyJWT = (roles= []) =>{ asyncHandler(async(req,res,next)=>{
+export const verifyJWT = (roles= ['Organizer','Admin', 'User']) =>{ return asyncHandler(async(req,res,next)=>{
   try {
     
       const token = req.cookies?.accesstoken || req.header("Authorization")?.replace( "Bearer", "")

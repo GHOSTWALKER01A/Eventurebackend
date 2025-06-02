@@ -118,16 +118,6 @@ const DeleteEvent = asyncHandler(async(req , res)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
 export {
     newEvent,
     newPublicEvent,

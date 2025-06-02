@@ -1,9 +1,9 @@
 import {Router} from "express"
-import { newEvent, newPublicEvent,
+import {newEvent,
+    newPublicEvent,
     individualEvents,
     Eventupdate,
-    DeleteEvent
- } from "../controllers/event.controller.js"
+    DeleteEvent} from '../controllers/event.controller.js'
 
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -11,10 +11,12 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router()
 
 
+router.use(verifyJWT)
+
 // Public routes
 
-router.route("/events").get(newPublicEvent)
-router.route("/eventsbyid").get(individualEvents)
+router.route("/").get(newPublicEvent)
+router.route("/:id").get(individualEvents)
 
 // For Admin and organiser
 
